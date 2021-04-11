@@ -6,16 +6,6 @@ export default function SwipableImage({user, willLike, willPass}) {
     return (
         <View>
             <Image source={{uri: user.picture.large}} style={styles.photo}/>
-            {willLike && (
-                <View style={styles.likeBox}>
-                    <Text style={{...styles.textPrimary, color: '#64EDCC'}}>LIKE</Text>
-                </View>
-            )}
-            {willPass && (
-                <View style={styles.passBox}>
-                    <Text style={{...styles.textPrimary, color: '#AB2222'}}>NAH</Text>
-                </View>
-            )}            
             <View style={styles.textContainer}>
                 <View style={styles.textRow}>
                     <Text style={[styles.textPrimary, styles.textShadow]}>{user.name.first}</Text>

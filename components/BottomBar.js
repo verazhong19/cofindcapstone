@@ -22,14 +22,14 @@ export default function BottomBar({handleLikePress, handlePassPress}) {
 const styles = StyleSheet.create(
     {
         container: {
-            height: 75,
+            height: 110,
             flexDirection: 'row',
             justifyContent: 'space-around',
             alignItems: 'center'
         },
         button: {
-            width: 50,
-            height: 50,
+            width: 70,
+            height: 70,
             backgroundColor: '#e5e5e5',
             borderRadius: 25,
             justifyContent: 'center',
