@@ -1,105 +1,43 @@
-import React, {useState, useEffect, useRef} from 'react';
-import { StyleSheet, Text, View, Alert, TouchableOpacity, Touchable } from 'react-native';
-import Constants from 'expo-constants';
-import TopBar from './components/TopBar'
-import axios from 'axios'
-import SwipableImage from './components/SwipableImage'
-import BottomBar from './components/BottomBar'
-import Swipes from './components/Swipes'
-import UserBio from './components/UserBio'
-import FlipCard from 'react-native-flip-card'
+// @refresh reset
+import React, {useState, useEffect} from 'react';
+import { Button, View, Text, TextInput, StyleSheet } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Main from './Routes/Main';
+import Chats from './Routes/Chats';
+import Profile from './Routes/Profile';
+import Launch from './Routes/register/Launch'
+import RegisterInfo from './Routes/register/RegisterInfo'
+import RegisterExperience from './Routes/register/RegisterExperience'
+import RegisterPhoto from './Routes/register/RegisterPhoto'
+import RegisterLocation from './Routes/register/RegisterLocation'
+import RegisterInterest from './Routes/register/RegisterInterest'
 
 
-export default function App() {
-  const swipesRef = useRef(null)
-  const [users, setUsers] = useState([])
-  const [currentIndex, setCurrentIndex] = useState(0)
-  async function fetchUsers() {
-    try{
-      const{data} = await axios.get('https://randomuser.me/api/?results=50')
-      setUsers(data.results);
-      // console.log(data.results);
-    } catch(error) {
-      console.log(error);
-      Alert.alert('Error users are weird', '', [{text: 'Retry', onPress: () => fetchUsers()}])
-    }
 
-  }
 
-  useEffect( () => {
-    fetchUsers()
-  }, [])
+const Stack = createStackNavigator();
 
-  function handleLike() {
-    console.log('like')
-    nextUser();
-  }
-
-  function handlePass() {
-    console.log('nah')
-    nextUser();
-  }
-
-  function nextUser() {
-    const nextIndex = users.length - 2  === currentIndex ? 0 : currentIndex+1
-    setCurrentIndex(nextIndex)
-  }
-
-  function handleLikePress() {
-    swipesRef.current.openLeft()
-  }
-
-  function handlePassPress() {
-    swipesRef.current.openRight()
-  }
+function App() {
 
   return (
-    <View style={styles.container}>
-      <TopBar />
-      <View style={styles.swipes}>
-        {users.length > 1 && 
-          users.map(
-            (u,i) => currentIndex === i && (
-          <FlipCard
-          friction={1000}
-          perspective={8000}
-          flipHorizontal={true}
-          flipVertical={false}
-          flip={false}
-          clickable={true}>
-            <View style={styles.face}>
-              <Swipes key={i} ref={swipesRef} currentIndex={currentIndex} users={users} handleLike={handleLike} handlePass={handlePass}></Swipes>
-            </View>
-            <View style={styles.back}>
-              <UserBio />
-            </View>
-          </FlipCard>
-        ) )
-          //<Swipes currentIndex={currentIndex} users={users}></Swipes>
-          
-        }
-      </View>
-      <BottomBar handleLikePress={handleLikePress} handlePassPress={handlePassPress}/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Launch">
+        <Stack.Screen name="Home" options={{header: () =>  null}} component={Main} />
+        <Stack.Screen name="Chat" component={Chats} />
+        <Stack.Screen name="Profile" component={Profile} />
+        <Stack.Screen name="Launch" options={{header: () =>  null}} component={Launch} />
+        <Stack.Screen name="RegisterInfo" component={RegisterInfo} />
+        <Stack.Screen name="RegisterExperience" component={RegisterExperience} />
+        <Stack.Screen name="RegisterPhoto" component={RegisterPhoto} />
+        <Stack.Screen name="RegisterLocation" component={RegisterLocation} />
+        <Stack.Screen name="RegisterInterest" component={RegisterInterest} />
+
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: Constants.statusBarHeight,
-  },
-  swipes: {
-    flex: 1,
-    padding: 10,
-    paddingTop: 8,
-    shadowColor: '#000',
-    shadowOffset: {
-        width: 0,
-        height: 3,
-    },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-    elevation: 7,
-  }
-});
+
+
+export default App;

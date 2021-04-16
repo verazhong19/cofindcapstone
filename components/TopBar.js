@@ -1,13 +1,17 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import {FontAwesome5, FontAwesome} from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native';
+
+
 
 export default function TopBar() {
+    const navigation = useNavigation();
     return (
         <View style={styles.container}>
             <FontAwesome5 name="braille" size={27} color="#ab2222" />
-            <FontAwesome name="comments" size={27} color="#5c5c5c" />
-            <FontAwesome name="user" size={27} color="#5c5c5c" />
+            <FontAwesome name="comments" size={27} color="#5c5c5c" onPress={() => navigation.navigate('Chat')}/>
+            <FontAwesome name="user" size={27} color="#5c5c5c" onPress={() => navigation.navigate('Profile')}/>
         </View>
     )
 }
