@@ -13,7 +13,7 @@ export default function RegisterInfo() {
         <TextInput style={styles.input} placeholder='Password'/>
         <TextInput style={styles.input} placeholder='Confirm Password'/>
        
-        <Button title='Next' onPress={() => navigation.navigate('RegisterPhoto')}/>
+        <Button title='Next' onPress={() => navigation.navigate('Home')}/>
       </View>
     )
 }
