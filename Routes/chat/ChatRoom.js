@@ -12,7 +12,7 @@ export default function ChatList() {
     setMessages([
       {
         _id: 1,
-        text: 'Hello developer',
+        text: 'Hi there!',
         createdAt: new Date(),
         user: {
           _id: 2,
@@ -20,16 +20,7 @@ export default function ChatList() {
           avatar: 'https://placeimg.com/140/140/any',
         },
       },
-      {
-        _id: 2,
-        text: 'Hello world',
-        createdAt: new Date(),
-        user: {
-          _id: 1,
-          name: 'React Native',
-          avatar: 'https://placeimg.com/140/140/any',
-        },
-      },
+
     ])
   }, [])
 

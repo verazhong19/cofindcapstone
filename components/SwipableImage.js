@@ -5,7 +5,7 @@ import {FontAwesome} from '@expo/vector-icons'
 export default function SwipableImage({user, willLike, willPass}) {
     return (
         <View>
-            <Image source={{uri: user.picture.large}} style={styles.photo}/>
+            <Image source={{uri: user.picture}} style={styles.photo}/>
             <View style={styles.textContainer}>
                 <View style={styles.textRow}>
                     <Text style={[styles.textPrimary, styles.textShadow]}>{user.name.first}</Text>
@@ -15,7 +15,7 @@ export default function SwipableImage({user, willLike, willPass}) {
                     <Text style={[styles.textSecondary, styles.textShadow]}>{user.location.city}</Text>
                 </View> 
                 <View style={styles.textRow}>
-                    <Text style={[styles.textTertiary, styles.textShadow]}>Software Engineer</Text>
+                    <Text style={[styles.textTertiary, styles.textShadow]}>{user.occupation}</Text>
                 </View> 
 
             </View>
@@ -62,17 +62,17 @@ const styles = StyleSheet.create ({
     },
     textPrimary: {
         color: 'white',
-        fontSize: 35,
+        fontSize: 100,
         fontWeight: 'bold',
     },
     textSecondary: {
         color: 'white',
-        fontSize: 25,
+        fontSize: 60,
         marginLeft: 10
     },
     textTertiary: {
         color: 'white',
-        fontSize: 25,
+        fontSize: 60,
     },
     textShadow: {
         textShadowColor: 'rgba(0, 0, 0, 0.8)',

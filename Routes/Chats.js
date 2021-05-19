@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button, FlatList } from "react-native";
+import { Modal,View, Text, Button, FlatList, StyleSheet } from "react-native";
 import { NavigationContainer, StackActions } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
@@ -23,28 +23,28 @@ const Messages = [
     userName: "Hope Myers",
     userImg: require("../assets/dummy/hope.jpg"),
     messageTime: "9 min ago",
-    messageText: "omg look at Ellie!",
+    messageText: "Hi! Nice to meet you!",
   },
   {
     id: "2",
     userName: "Daniel Zamiri",
     userImg: require("../assets/dummy/daniel.jpg"),
     messageTime: "9 min ago",
-    messageText: "omg look at Leo!",
+    messageText: "Hi there!",
   },
   {
     id: "3",
     userName: "Winny Wang",
     userImg: require("../assets/dummy/penny.jpg"),
     messageTime: "9 min ago",
-    messageText: "omg look at Koko!",
+    messageText: "Hello!",
   },
   {
     id: "4",
     userName: "Zane Fadul",
     userImg: require("../assets/dummy/zane.jpg"),
     messageTime: "9 min ago",
-    messageText: "omg look at Cooper!",
+    messageText: "What are you up to now?",
   },
 ];
 
@@ -82,3 +82,9 @@ export default function Chats() {
     </Container>
   );
 }
+
+const styles = StyleSheet.create({
+  chat: {
+    width: '100%'
+  },
+});

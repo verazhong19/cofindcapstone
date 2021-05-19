@@ -1,5 +1,5 @@
 import React , {useState} from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Alert } from 'react-native'
 import {RectButton, TouchableOpacity} from 'react-native-gesture-handler'
 import SwipableImage from './SwipableImage'
 import Swipeable from 'react-native-gesture-handler/Swipeable';

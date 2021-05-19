@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text } from 'react-native'
 import {FontAwesome} from '@expo/vector-icons'
 
-export default function UserBio() {
+export default function UserBio({user}) {
     return (
         <View>
             <View style={styles.photo}/>
@@ -12,11 +12,11 @@ export default function UserBio() {
                 </View>
                
                 <View style={styles.textRow}>
-                    <Text style={[styles.textSecondary, styles.textShadow]}>New York University</Text>
+                    <Text style={[styles.textSecondary, styles.textShadow]}>{user.education}</Text>
                 </View> 
 
                 <View style={styles.textRow}>
-                    <Text style={[styles.textTertiary, styles.textShadow]}>Interactive Media and Dogs, 2016 - 2020</Text>
+                    <Text style={[styles.textTertiary, styles.textShadow]}>{user.major}</Text>
                 </View> 
                 
                 
@@ -26,26 +26,28 @@ export default function UserBio() {
                 </View>
                
                 <View style={styles.textRow}>
-                    <Text style={[styles.textSecondary, styles.textShadow]}>XNode</Text>
+                    <Text style={[styles.textSecondary, styles.textShadow]}>{user.company[0]}</Text>
                 </View> 
 
                 <View style={styles.textRow}>
-                    <Text style={[styles.textTertiary, styles.textShadow]}>Dog Innovator, 2020 - Present</Text>
+                    <Text style={[styles.textTertiary, styles.textShadow]}>{user.position[0]}</Text>
                 </View> 
 
                 <View style={styles.textRow}>
-                    <Text style={[styles.textSecondary, styles.textShadow]}>Facebook</Text>
-                </View>
-                <View style={styles.textRow}>
-                    <Text style={[styles.textTertiary, styles.textShadow]}>Software Engineer, 2019 - 2020</Text>
-                </View>
+                    <Text style={[styles.textSecondary, styles.textShadow]}>{user.company[1]}</Text>
+                </View> 
 
                 <View style={styles.textRow}>
-                    <Text style={[styles.textSecondary, styles.textShadow]}>NYU Shanghai</Text>
-                </View>
-                <View style={styles.textRow}>
-                    <Text style={[styles.textTertiary, styles.textShadow]}>Learning Assistant, 2018 - 2019</Text>
+                    <Text style={[styles.textTertiary, styles.textShadow]}>{user.position[1]}</Text>
                 </View> 
+
+                <View style={styles.textRow}>
+                    <Text style={[styles.textSecondary, styles.textShadow]}>{user.company[2]}</Text>
+                </View> 
+
+                <View style={styles.textRow}>
+                    <Text style={[styles.textTertiary, styles.textShadow]}>{user.position[2]}</Text>
+                </View>  
                 </View>
 
                 <View style={styles.categoryContainer}>
@@ -54,17 +56,17 @@ export default function UserBio() {
                 </View>
 
                 <View style={styles.textRow}>
-                    <Text style={[styles.textTertiary, styles.textShadow]}>Product Management</Text>
+                    <Text style={[styles.textTertiary, styles.textShadow]}>{user.interests[0]}</Text>
                 </View> 
 
             
                 <View style={styles.textRow}>
-                    <Text style={[styles.textTertiary, styles.textShadow]}>Entrepreneurship</Text>
+                    <Text style={[styles.textTertiary, styles.textShadow]}>{user.interests[1]}</Text>
                 </View>
 
                 
                 <View style={styles.textRow}>
-                    <Text style={[styles.textTertiary, styles.textShadow]}>Dogs</Text>
+                    <Text style={[styles.textTertiary, styles.textShadow]}>{user.interests[2]}</Text>
                 </View> 
                 </View>
 
@@ -79,7 +81,7 @@ const styles = StyleSheet.create ({
         height: '100%',
         resizeMode: 'cover',
         borderRadius: 20,
-        backgroundColor: 'grey'
+        backgroundColor: 'rgba(0, 0, 0, 0.2)'
     },
     textContainer: {
         position: 'absolute',
@@ -96,16 +98,16 @@ const styles = StyleSheet.create ({
     },
     textPrimary: {
         color: 'white',
-        fontSize: 35,
+        fontSize: 60,
         fontWeight: 'bold',
     },
     textSecondary: {
         color: 'white',
-        fontSize: 25,
+        fontSize: 45,
     },
     textTertiary: {
         color: 'white',
-        fontSize: 18,
+        fontSize: 32,
     },
     textShadow: {
         textShadowColor: 'rgba(0, 0, 0, 0.8)',
